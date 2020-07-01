@@ -16,11 +16,11 @@ class PlayerServiceImpl : PlayerService {
     lateinit var playerRepository: PlayerRepository
 
     override fun leaders(): List<Player> =
-            playerRepository.findTop3ByOrderByTotalScoreAsc()
+            playerRepository.findAllByTotalScoreNotNull()
 
     override fun score(handle: String, points: Int): Int {
         val player = playerRepository
-                .findById(handle).orElse(Player(handle))
+                .findById(handle).orElse(Player(handle,points))
                 + points
         playerRepository.save(player)
         return player.totalScore
