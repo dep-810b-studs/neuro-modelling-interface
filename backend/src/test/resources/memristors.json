@@ -1,0 +1,38 @@
+[
+  {
+    "description": "DOI:10.3390/electronics8040383 eq. (11)",
+    "id": 0,
+    "params": [
+      {
+        "down": 0.2,
+        "name": "x0",
+        "up": 0.8,
+        "value": 0.4
+      },
+      {
+        "down": 0.4,
+        "name": "v_th",
+        "up": 1.6,
+        "value": 0.8
+      }
+    ]
+  },
+  {
+    "description": "DOI:10.1109/MWSCAS.2013.6674799 eq. (4)",
+    "id": 1,
+    "params": [
+      {
+        "down": -0.5,
+        "name": "v_n",
+        "up": -2.0,
+        "value": -1.0
+      },
+      {
+        "down": 5e-15,
+        "name": "nu_v",
+        "up": 2e-14,
+        "value": 1e-14
+      }
+    ]
+  }
+]
