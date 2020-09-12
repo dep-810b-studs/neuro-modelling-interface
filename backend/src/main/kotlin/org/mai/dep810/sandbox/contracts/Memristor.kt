@@ -9,6 +9,6 @@ data class Memristor(
 data class MemristorParams(
         var up: Double,
         var down: Double,
-        var value: Double,
-        var name: String
+        var value: Double? = null,
+        var name: String? = null
 )
