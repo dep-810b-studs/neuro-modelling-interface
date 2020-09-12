@@ -1,0 +1,1 @@
+{"id_memristor":0,"params_memristor":[{"value":0.4},{"value":0.8}],"patterns":[[[0,1],[1,0]]],"params":[{"value":0.002},{"value":0.01}],"n_epochs":30000}
