@@ -1,11 +1,11 @@
 import React from 'react';
 import info from "./../ConstData/info.json";
 
-const model_memristors = info.model_memristors;
+const modelMemristors = info.model_memristors;
 
 export const MemristorParams: React.FunctionComponent = () => (
    <ul>
-       {model_memristors
+       {modelMemristors
            .map(model => (
                <li>
                    <a href={model.url}>
