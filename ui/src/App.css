@@ -7,14 +7,13 @@
   font-family: 'Lato', sans-serif;
 }
 
-.home,
 .tasks,
 .results {
   display: flex;
   height: 90vh;
   align-items:flex-start;
-  padding: 100px;
-  justify-content: center;
+  padding: 10px;
+  justify-content: left;
   font-size: 3rem;
   background-repeat: no-repeat;
   background-size: 90% 90%;

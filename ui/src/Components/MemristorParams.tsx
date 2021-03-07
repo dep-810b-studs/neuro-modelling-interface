@@ -1,10 +1,11 @@
 import React from 'react';
-import info from "./../ConstData/info.json";
+import './MemristorParams.css';
+import info from "./../const_data/info.json";
 
 const modelMemristors = info.model_memristors;
 
 export const MemristorParams: React.FunctionComponent = () => (
-   <ul>
+   <ul className="memrisotor-params-list">
        {modelMemristors
            .map(model => (
                <li>
