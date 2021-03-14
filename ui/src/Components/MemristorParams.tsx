@@ -1,39 +1,72 @@
-import React from 'react';
-import { Input } from 'semantic-ui-react'
+import React, {useState} from 'react';
 import './MemristorParams.css';
 import info from "./../const_data/info.json";
+import {Dropdown, DropdownItemProps, DropdownProps} from "semantic-ui-react";
 
-const modelMemristors = info.model_memristors;
+export type MemristorParam =
+{
+    value: number;
+    name: string;
+}
 
-export const MemristorParams: React.FunctionComponent = () => (
-/*    <div>
-       <Input list='memristors' placeholder='Choose memristor model...'  />
-       <datalist id='memristors'>
-           {modelMemristors.map(model =>
-           {
-               <option value={model.name}>{model.name}</option>
-           })}
-       </datalist>
-    </div>*/
-   <ul className="memrisotor-params-list">
-       {modelMemristors
-           .map(model => (
-               <li>
-                   Название модели мемристора &#9;
-                   <a href={model.url}>
-                       {model.name}
-                   </a>
-                   <br/>
-                   Описание модели мемристора &#9;
-                   {model.description}
-                   <br/>
-                  Параметры модели мемристора &#9;
-                  <ul>
-                      {model.params.map(param => <li> {param.name} &#9; {param.value}</li>)}
-                   </ul>
-               </li>
-           ))}
-   </ul>
-);
+export type MemristorParamsProps =
+{
+    id: number;
+    name: string;
+    description: string;
+    url: string;
+    params: MemristorParam[];
+}
 
-export default MemristorParams;
+export default class MemristorParams extends React.Component<any, MemristorParamsProps>
+{
+    private _modelMemristors = info.model_memristors;
+    private _memristorSelectionItems : DropdownItemProps[];
+
+    constructor(props: any)
+    {
+        super(props);
+        this.state = this._modelMemristors[0];
+        this._memristorSelectionItems = this._modelMemristors.map(model =>
+        {
+            return {key: model.id, text: model.name, value: model.id }
+        });
+        this.dropdownChange = this.dropdownChange.bind(this);
+        
+    }
+
+    private dropdownChange (event: React.SyntheticEvent<HTMLElement>, data: DropdownProps)
+    {
+        if(typeof data.value == "number")
+        {
+            const currentModel = this._modelMemristors
+                .find(model => model.id == data.value);
+
+            if(currentModel != undefined)
+                this.setState(currentModel);
+        }
+    }
+
+    render = () => (
+        <div className="memrisotor-params-list">
+            <h1>
+                Название модели мемристора
+            </h1>
+            <Dropdown
+                text={this.state.name}
+                placeholder='State'
+                search selection options={this._memristorSelectionItems}
+                onChange={this.dropdownChange}
+            />
+            <h1>
+                Описание модели мемристора
+            </h1>
+            <h2>
+                <a href={this.state.url}>
+                    {this.state.description}
+                </a>
+            </h2>
+        </div>);
+}
+
+
