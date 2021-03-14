@@ -66,6 +66,12 @@ export default class MemristorParams extends React.Component<any, MemristorParam
                     {this.state.description}
                 </a>
             </h2>
+            <h1>
+                Параметры модели мемристора
+            </h1>
+            <ul>
+                {this.state.params.map(param => <li>{param.name}: &#9; {param.value} </li>)}
+            </ul>
         </div>);
 }
 
