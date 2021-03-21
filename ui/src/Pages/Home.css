@@ -1,5 +1,11 @@
-.home-page-wrapper{
+.params-section{
     display: flex;
     gap: 35px;
-    overflow-y: scroll;
+    flex-direction: row;
+}
+
+.home-page-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
