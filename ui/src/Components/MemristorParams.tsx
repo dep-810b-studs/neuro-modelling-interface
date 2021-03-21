@@ -1,7 +1,7 @@
 import React from 'react';
 import './MemristorParams.css';
 import info from "./../const_data/info.json";
-import {Dropdown, DropdownItemProps, DropdownProps, Segment, SegmentGroup} from "semantic-ui-react";
+import {Button, Dropdown, DropdownItemProps, DropdownProps, Segment, SegmentGroup} from "semantic-ui-react";
 import ParamsList, {Param} from "./ParamsList";
 
 export type MemristorParamsState =
@@ -65,6 +65,7 @@ export default class MemristorParams extends React.Component<any, MemristorParam
                 Параметры модели мемристора
             </h3>
             <ParamsList Values={this.state.params}/>
+            <Button icon='plus'/>
         </div>);
 }
 
