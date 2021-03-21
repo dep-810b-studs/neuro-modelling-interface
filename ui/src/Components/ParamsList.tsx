@@ -1,5 +1,5 @@
 import React from "react";
-import {Segment, SegmentGroup} from "semantic-ui-react";
+import {List, Segment, SegmentGroup} from "semantic-ui-react";
 
 export type Param =
 {
@@ -17,16 +17,19 @@ export default class ParamsList extends React.Component<ParamsListProps, any>
     render()
     {
         return (
-            <SegmentGroup horizontal={false}>
-                {this.props.Values.map(param =>
-                    <SegmentGroup horizontal={true}>
-                        <Segment>
-                            {param.name}
-                        </Segment>
-                        <Segment>
-                            {param.value}
-                        </Segment>
-                    </SegmentGroup>)}
-            </SegmentGroup>)
+            <div className='params-list'>
+                <SegmentGroup size='mini'>
+                    {this.props.Values.map(param =>
+                        <SegmentGroup horizontal={true}>
+                            <Segment attached='top'>
+                                {param.name}
+                            </Segment>
+                            <Segment attached='top'>
+                                {param.value}
+                            </Segment>
+                        </SegmentGroup>)}
+                </SegmentGroup>
+            </div>
+        );
     }
 }
