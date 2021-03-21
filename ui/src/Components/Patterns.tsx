@@ -7,9 +7,9 @@ const patterns = info.patterns;
 
 export const Patterns: React.FunctionComponent = () => (
     <div className="patterns-wrapper">
-        <h1>
+        <h3>
             Шаблоны для распознавания
-        </h1>
+        </h3>
         <div className="patterns">
             {patterns.map(pattern => (<ImagePattern Values={pattern}/>))}
         </div>
