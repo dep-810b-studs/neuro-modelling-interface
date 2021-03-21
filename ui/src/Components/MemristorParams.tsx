@@ -2,12 +2,7 @@ import React from 'react';
 import './MemristorParams.css';
 import info from "./../const_data/info.json";
 import {Dropdown, DropdownItemProps, DropdownProps, Segment, SegmentGroup} from "semantic-ui-react";
-
-export type MemristorParam =
-{
-    value: number;
-    name: string;
-}
+import ParamsList, {Param} from "./ParamsList";
 
 export type MemristorParamsState =
 {
@@ -15,7 +10,7 @@ export type MemristorParamsState =
     name: string;
     description: string;
     url: string;
-    params: MemristorParam[];
+    params: Param[];
 }
 
 export default class MemristorParams extends React.Component<any, MemristorParamsState>
@@ -69,17 +64,7 @@ export default class MemristorParams extends React.Component<any, MemristorParam
             <h3>
                 Параметры модели мемристора
             </h3>
-            <SegmentGroup horizontal={false}>
-                {this.state.params.map(param =>
-                    <SegmentGroup horizontal={true}>
-                        <Segment>
-                            {param.name}
-                        </Segment>
-                        <Segment>
-                            {param.value}
-                        </Segment>
-                    </SegmentGroup>)}
-            </SegmentGroup>
+            <ParamsList Values={this.state.params}/>
         </div>);
 }
 
