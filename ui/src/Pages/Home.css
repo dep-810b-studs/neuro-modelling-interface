@@ -1,17 +1,5 @@
-.home{
-    display: flex;
-    height: 90vh;
-    align-items:flex-start;
-    padding: 10px;
-    justify-content: left;
-    font-size: 3rem;
-    background-repeat: no-repeat;
-    background-size: 90% 90%;
-    border-image-width: 25%;
-    color: #2816af;
-}
-
 .home-page-wrapper{
     display: flex;
     gap: 35px;
+    overflow-y: scroll;
 }
