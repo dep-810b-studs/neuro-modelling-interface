@@ -7,12 +7,8 @@ export declare interface ImagePatternProps
 
 export default class ImagePattern extends React.Component<ImagePatternProps, any>
 {
-    private transpose = (array: number[][]): number[][] =>
-        array[0].map((_, colIndex) => array.map(row => row[colIndex]));
-
     private getClassNameForPatternItem = (itemValue: number) : string =>
         itemValue == 1 ? "pattern-item-black" : "pattern-item-white";
-
 
     render()
     {
@@ -24,8 +20,9 @@ export default class ImagePattern extends React.Component<ImagePatternProps, any
                     <div className={this.getClassNameForPatternItem(item)}>
                         &#160;
                     </div>)}
-                    <br/>
                 </div>)}
+                <br/>
+                <br/>
             </div>
         )
     }
