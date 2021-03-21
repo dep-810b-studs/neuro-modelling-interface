@@ -1,3 +1,6 @@
-.nertwork-params-list{
+.network-params{
+    display: flex;
+    flex-direction: column;
     font-size: large;
+    width: 35%;
 }
