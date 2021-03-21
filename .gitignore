@@ -27,6 +27,5 @@ yarn-error.log*
 **/.idea
 /data
 frontend/.vscode
-*.iml
 target
 

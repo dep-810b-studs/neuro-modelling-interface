@@ -39,8 +39,8 @@ class SwaggerConfig {
 }
 
 @SpringBootApplication
-class SandboxApplication
+class NeuroModellingApi
 
 fun main(args: Array<String>) {
-	runApplication<SandboxApplication>(*args)
+	runApplication<NeuroModellingApi>(*args)
 }

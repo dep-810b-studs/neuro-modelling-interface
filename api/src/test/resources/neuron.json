@@ -1,0 +1,13 @@
+{
+  "description": "RC-neuron",
+  "params": [
+    {
+      "name": "tau_s",
+      "value": 0.002
+    },
+    {
+      "name": "tau_r",
+      "value": 0.01
+    }
+  ]
+}

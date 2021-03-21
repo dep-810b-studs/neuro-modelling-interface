@@ -1,4 +1,4 @@
-    import org.springframework.data.annotation.Persistent
+import org.springframework.data.annotation.Persistent
 import java.time.Instant
 
 enum class RunStatus { PENDING, STARTED, COMPLETED, CANCELLED, FAILED }
