@@ -1,3 +1,34 @@
-.patterns{
-    background-color: #6d9cbe;
+.patterns-wrapper
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.patterns
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.pattern {
+    display: flex;
+    flex-direction: row;
+}
+
+.pattern-row{
+    display: flex;
+    flex-direction: row;
+    font-size: 1000%;
+}
+
+.pattern-item-white
+{
+    flex-direction: column;
+    background-color: white;
+}
+
+.pattern-item-black
+{
+    flex-direction: column;
+    background-color: black;
 }
