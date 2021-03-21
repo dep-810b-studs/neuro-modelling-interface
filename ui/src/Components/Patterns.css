@@ -1,0 +1,36 @@
+.patterns-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    gap: 2%;
+}
+
+.patterns {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    overflow-y: scroll;
+}
+
+.pattern {
+    display: flex;
+    flex-direction: row;
+}
+
+.pattern-row{
+    display: flex;
+    flex-direction: row;
+    font-size: 1000%;
+}
+
+.pattern-item-white
+{
+    flex-direction: column;
+    background-color: white;
+}
+
+.pattern-item-black
+{
+    flex-direction: column;
+    background-color: black;
+}

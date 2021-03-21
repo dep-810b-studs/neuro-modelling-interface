@@ -1,0 +1,6 @@
+version: '3.7'
+services:
+  user-interface:
+    build: ./ui/
+    ports:
+    - 3001:3000

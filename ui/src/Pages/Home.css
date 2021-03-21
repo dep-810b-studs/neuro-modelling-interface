@@ -1,0 +1,18 @@
+.params-section{
+    display: flex;
+    gap: 35px;
+    flex-direction: row;
+    height: 600px;
+}
+
+.params-list{
+    font-size: large;
+    max-height: 250px;
+    overflow-y: scroll;
+}
+
+.home-page-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}

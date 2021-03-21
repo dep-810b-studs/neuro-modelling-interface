@@ -1,0 +1,10 @@
+.memrisotor-params-list {
+    display: flex;
+    flex-direction: column;
+    font-size: medium;
+    width: 45%;
+}
+
+.memristor-param {
+    font-size: large;
+}
