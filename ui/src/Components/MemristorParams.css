@@ -1,5 +1,10 @@
-.memrisotor-params-list{
+.memrisotor-params-list
+{
     font-size: medium;
-    background-color: #01ff70;
-    width: 30%;
+    flex-direction: row;
+}
+
+.memristor-param
+{
+    font-size: large;
 }

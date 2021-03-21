@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './MemristorParams.css';
 import info from "./../const_data/info.json";
 import {Dropdown, DropdownItemProps, DropdownProps} from "semantic-ui-react";
@@ -9,7 +9,7 @@ export type MemristorParam =
     name: string;
 }
 
-export type MemristorParamsProps =
+export type MemristorParamsState =
 {
     id: number;
     name: string;
@@ -18,7 +18,7 @@ export type MemristorParamsProps =
     params: MemristorParam[];
 }
 
-export default class MemristorParams extends React.Component<any, MemristorParamsProps>
+export default class MemristorParams extends React.Component<any, MemristorParamsState>
 {
     private _modelMemristors = info.model_memristors;
     private _memristorSelectionItems : DropdownItemProps[];
@@ -69,9 +69,17 @@ export default class MemristorParams extends React.Component<any, MemristorParam
             <h1>
                 Параметры модели мемристора
             </h1>
-            <ul>
-                {this.state.params.map(param => <li>{param.name}: &#9; {param.value} </li>)}
-            </ul>
+            <div className="ui segments">
+                {this.state.params.map(param =>
+                    <div className="ui horizontal segments">
+                        <div className="ui segment">
+                            {param.name}
+                        </div>
+                        <div className="ui segment">
+                            {param.value}
+                        </div>
+                    </div>)}
+            </div>
         </div>);
 }
 
