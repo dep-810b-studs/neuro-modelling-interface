@@ -1,7 +1,7 @@
 import React from 'react';
 import './MemristorParams.css';
 import info from "./../const_data/info.json";
-import {Dropdown, DropdownItemProps, DropdownProps} from "semantic-ui-react";
+import {Dropdown, DropdownItemProps, DropdownProps, Segment, SegmentGroup} from "semantic-ui-react";
 
 export type MemristorParam =
 {
@@ -49,37 +49,37 @@ export default class MemristorParams extends React.Component<any, MemristorParam
 
     render = () => (
         <div className="memrisotor-params-list">
-            <h1>
+            <h3>
                 Название модели мемристора
-            </h1>
+            </h3>
             <Dropdown
                 text={this.state.name}
                 placeholder='State'
                 search selection options={this._memristorSelectionItems}
                 onChange={this.dropdownChange}
             />
-            <h1>
+            <h3>
                 Описание модели мемристора
-            </h1>
-            <h2>
+            </h3>
+            <h4>
                 <a href={this.state.url}>
                     {this.state.description}
                 </a>
-            </h2>
-            <h1>
+            </h4>
+            <h3>
                 Параметры модели мемристора
-            </h1>
-            <div className="ui segments">
+            </h3>
+            <SegmentGroup horizontal={false}>
                 {this.state.params.map(param =>
-                    <div className="ui horizontal segments">
-                        <div className="ui segment">
+                    <SegmentGroup horizontal={true}>
+                        <Segment>
                             {param.name}
-                        </div>
-                        <div className="ui segment">
+                        </Segment>
+                        <Segment>
                             {param.value}
-                        </div>
-                    </div>)}
-            </div>
+                        </Segment>
+                    </SegmentGroup>)}
+            </SegmentGroup>
         </div>);
 }
 
