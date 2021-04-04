@@ -2,28 +2,42 @@ import React from "react";
 
 export declare interface ImagePatternProps
 {
-    Values: number [][]
+    Values: number [][];
 }
 
-export default class ImagePattern extends React.Component<ImagePatternProps, any>
+export const ImagePattern: React.FunctionComponent<ImagePatternProps> = (imagePatternProps: ImagePatternProps) =>
 {
-    private getClassNameForPatternItem = (itemValue: number) : string =>
-        itemValue == 1 ? "pattern-item-black" : "pattern-item-white";
+    const canvas = React.useRef(null);
 
-    render()
+    React.useEffect(() =>
     {
-        return (
-            <div>
-                {this.props.Values.map(row =>
-                <div className="pattern-row">
-                    {row.map(item =>
-                    <div className={this.getClassNameForPatternItem(item)}>
-                        &#160;
-                    </div>)}
-                </div>)}
-                <br/>
-                <br/>
-            </div>
-        )
-    }
+        if(canvas == null || canvas.current == null)
+            return;
+
+        // @ts-ignore ignore cause one line upper exist handling case when canvas is null
+        const context = canvas.current.getContext("2d") as CanvasRenderingContext2D;
+
+        const cellSide = 30;
+
+        for (let i = 0; i < imagePatternProps.Values.length; i++)
+        {
+            for (let j = 0; j < imagePatternProps.Values[i].length; j++)
+            {
+                let x = j * cellSide;
+                let y = i * cellSide;
+
+                let color = imagePatternProps.Values[i][j] * 255;
+                const cellColor = `rgb(${color},${color},${color})`;
+
+                context.beginPath();
+                context.fillStyle = cellColor;
+                context.fillRect(x, y, cellSide, cellSide);
+                }
+            }
+
+        }, [canvas]);
+
+       return <canvas height={300} ref={canvas} onClick={() => alert('you click on canvas')}/>;
 };
+
+export default ImagePattern;
