@@ -1,0 +1,28 @@
+.tasks{
+    display: flex;
+    flex-direction: row;
+    gap: 1%;
+}
+
+.task-info{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.running-tasks-list{
+
+}
+
+.running-tasks-weights{
+    display: flex;
+    flex-direction: row;
+    overflow-y: scroll;
+    gap: 0.005%;
+}
+
+.pattern-canvas{
+    fill:rgb(0,0,255);
+    stroke-width:10;
+    stroke:rgb(0,0,0)
+}

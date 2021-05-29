@@ -1,26 +1,25 @@
 import React from 'react';
 import './NetworkParams.css';
-import info from "./../const_data/info.json";
 import {Input} from "@material-ui/core";
-import ParamsList from "./ParamsList";
+import ParamsList from "../../CommonComponents/ParamsList";
 import {Button} from "semantic-ui-react";
+import {NeuralNetworkInfo} from "../../../State/InformationContracts";
+import PropsWrapper from "../../../PropsWrapper";
 
-const networkParams = info.neural_network;
-
-export const NetworkParams: React.FunctionComponent = () => (
+export const NetworkParams = (props: PropsWrapper<NeuralNetworkInfo>) => (
     <div className='network-params'>
         <h3>
             Описание модели нейросети
         </h3>
-        {networkParams.description}
+        {props.Data.description}
         <h3>
             Количество эпох
         </h3>
-        <Input placeholder={networkParams.n_epochs.toString()}/>
+        <Input placeholder={props.Data.n_epochs.toString()}/>
         <h3>
             Параметры модели нейросети
         </h3>
-        <ParamsList Values={networkParams.params}/>
+        <ParamsList Data={props.Data.params}/>
         <Button icon='plus'/>
     </div>
 );

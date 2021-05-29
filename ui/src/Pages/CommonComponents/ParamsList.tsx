@@ -1,25 +1,12 @@
 import React from "react";
-import {List, Segment, SegmentGroup} from "semantic-ui-react";
+import {Segment, SegmentGroup} from "semantic-ui-react";
+import {Param} from "../../State/InformationContracts";
+import PropsWrapper from "../../PropsWrapper";
 
-export type Param =
-{
-    name: string;
-    value: number;
-}
-
-export type ParamsListProps =
-{
-    Values: Param[]
-}
-
-export default class ParamsList extends React.Component<ParamsListProps, any>
-{
-    render()
-    {
-        return (
+const ParamsList = (props: PropsWrapper<Param[]>) =>
             <div className='params-list'>
                 <SegmentGroup size='mini'>
-                    {this.props.Values.map(param =>
+                    {props.Data.map(param =>
                         <SegmentGroup horizontal={true}>
                             <Segment attached='top'>
                                 {param.name}
@@ -29,7 +16,6 @@ export default class ParamsList extends React.Component<ParamsListProps, any>
                             </Segment>
                         </SegmentGroup>)}
                 </SegmentGroup>
-            </div>
-        );
-    }
-}
+            </div>;
+
+export default ParamsList;

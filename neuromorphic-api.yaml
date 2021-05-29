@@ -1,0 +1,53 @@
+swagger: '2.0'
+info:
+  title: "API: Neuromorphic Module"
+  description: "API модуля интеграции с системой нейроморфного моделирования"
+  version: 1.0.0
+
+paths:
+  /run:
+    get:
+      summary: returns all running tasks
+      operationId: getAllRuns
+      description: "Информация о всех запущенных расчетах"
+      produces:
+        - application/json
+      responses:
+        200:
+          description: current running tasks
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Run'
+        400:
+          description: bad input parameter
+      post:
+        summary: run task
+        operationId: run task
+        reponses:
+          200:
+          400:
+          500:
+            description: Internal Server Error
+      delete:
+definitions:
+  Run:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+        example: "a3a46ffc-2389-402d-b1ee-b9024c6998ae"
+      name:
+        type: string
+        example: "Task name"
+      status:
+        type: string
+        example: "Running"
+
+
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /sh-vasily/NeuromorphicModule/1.0.0
+schemes:
+  - https

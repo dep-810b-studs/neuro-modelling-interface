@@ -1,40 +1,25 @@
 import React from 'react';
 import './MemristorParams.css';
-import info from "./../const_data/info.json";
-import {Button, Dropdown, DropdownItemProps, DropdownProps, Segment, SegmentGroup} from "semantic-ui-react";
-import ParamsList, {Param} from "./ParamsList";
+import {Button, Dropdown, DropdownItemProps, DropdownProps} from "semantic-ui-react";
+import ParamsList  from "../../CommonComponents/ParamsList";
+import {MemristorInfo} from "../../../State/InformationContracts";
+import PropsWrapper from "../../../PropsWrapper";
 
-export type MemristorParamsState =
-{
-    id: number;
-    name: string;
-    description: string;
-    url: string;
-    params: Param[];
-}
-
-export default class MemristorParams extends React.Component<any, MemristorParamsState>
-{
-    private _modelMemristors = info.model_memristors;
+export default class MemristorParams extends React.Component<PropsWrapper<MemristorInfo[]>, MemristorInfo> {
     private _memristorSelectionItems : DropdownItemProps[];
 
-    constructor(props: any)
-    {
+    constructor(props: PropsWrapper<MemristorInfo[]>) {
         super(props);
-        this.state = this._modelMemristors[0];
-        this._memristorSelectionItems = this._modelMemristors.map(model =>
-        {
+        this.state = this.props.Data[0];
+        this._memristorSelectionItems = this.props.Data.map(model => {
             return {key: model.id, text: model.name, value: model.id }
         });
         this.dropdownChange = this.dropdownChange.bind(this);
-        
     }
 
-    private dropdownChange (event: React.SyntheticEvent<HTMLElement>, data: DropdownProps)
-    {
-        if(typeof data.value == "number")
-        {
-            const currentModel = this._modelMemristors
+    private dropdownChange (event: React.SyntheticEvent<HTMLElement>, data: DropdownProps) {
+        if(typeof data.value == "number") {
+            const currentModel = this.props.Data
                 .find(model => model.id == data.value);
 
             if(currentModel != undefined)
@@ -64,7 +49,7 @@ export default class MemristorParams extends React.Component<any, MemristorParam
             <h3>
                 Параметры модели мемристора
             </h3>
-            <ParamsList Values={this.state.params}/>
+            <ParamsList Data={this.state.params}/>
             <Button icon='plus'/>
         </div>);
 }

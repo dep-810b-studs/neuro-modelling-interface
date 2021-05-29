@@ -7,7 +7,10 @@
   font-family: 'Lato', sans-serif;
 }
 
-.tasks,
+.tasks{
+  display: flex;
+  flex-direction: column;
+}
 .results {
   display: flex;
   height: 90vh;
