@@ -50,8 +50,7 @@ export function getRunTaskInputExample() : RunTaskInput {
 
 export interface IStateManager{
     Subscribe(observer: (runTaskInfo: RunTaskInfo) => void): void;
-    UpdatePatterns(e: React.MouseEvent<HTMLCanvasElement, MouseEvent>): void;
-    ReadTaskInputFromFile(e :ChangeEvent<HTMLInputElement>): void;
+    ReadTaskInputFromFile(e: ChangeEvent<HTMLInputElement>): void;
     SaveTaskInputToFile(): void;
     GetData(): RunTaskInfo;
 }
@@ -80,13 +79,7 @@ export default class StateManager implements IStateManager{
         this._observer = observer;
     }
 
-    UpdatePatterns(e: React.MouseEvent<HTMLCanvasElement, MouseEvent>){
-        const res = this.convertPointCordinates(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
-        this.inversePoint(res[0],res[1],res[2]);
-        this._observer(this._state);
-    }
-
-    ReadTaskInputFromFile(e :ChangeEvent<HTMLInputElement>){
+    ReadTaskInputFromFile(e: ChangeEvent<HTMLInputElement>){
         if(e.target.files == null)
             return;
         let runTaskInputFile = e.target.files[0];
@@ -104,13 +97,4 @@ export default class StateManager implements IStateManager{
     GetData(): RunTaskInfo{
         return this._state;
     }
-
-    private convertPointCordinates(x: number, y: number): [number, number,number] {
-        return [0,Math.trunc(y/30),Math.trunc(x/30)]
-    }
-
-    private inversePoint(i :number,j :number,k :number):void{
-        this._state.patterns[i][j][k] = this._state.patterns[i][j][k] == 0 ? 1 : 0;
-    }
-
 }
