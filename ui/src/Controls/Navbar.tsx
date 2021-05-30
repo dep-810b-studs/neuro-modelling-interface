@@ -19,7 +19,7 @@ function Navbar() {
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
             <div className='header-text'>
-                Модуль нейроморфного моделирования
+                Сервис нейроморфного моделирования
             </div>
         </div>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
