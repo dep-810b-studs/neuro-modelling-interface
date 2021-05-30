@@ -5,13 +5,12 @@ import "./TasksResults.css";
 import TaskItem from "../CommonComponents/TaskItem";
 import ImagePattern from "../CommonComponents/ImagePattern";
 
-export default class TasksResults extends React.Component<any, any> {
+export default class TasksResults extends React.Component<any, any>{
     private _epochSelectionItems : DropdownItemProps[];
 
-    constructor(props: any) {
+    constructor(props: any){
         super(props);
-        this._epochSelectionItems = epochs.map(epochItem =>
-        {
+        this._epochSelectionItems = epochs.map(epochItem =>{
             return {key: epochItem.epoch, text: epochItem.epoch, value: epochItem.epoch};
         });
     };
@@ -44,7 +43,11 @@ export default class TasksResults extends React.Component<any, any> {
                     <div className="running-tasks-weights">
                         {epochs.map(epochItem =>
                             epochItem.weights.map(epochItemWeights =>
-                                <ImagePattern Data={epochItemWeights}/>))}
+                                <ImagePattern 
+                                    Pattern={epochItemWeights} 
+                                    PatternNumber={-1} 
+                                    EidatblePattern={false}
+                                />))}
                     </div>
                 </div>
             </div>

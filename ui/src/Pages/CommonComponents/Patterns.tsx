@@ -1,4 +1,3 @@
-import React from 'react';
 import './Patterns.css';
 import ImagePattern from "./ImagePattern";
 import {Button} from "semantic-ui-react";
@@ -10,7 +9,12 @@ const ImagePatterns = (props: PropsWrapper<number[][][]>) =>
                 Шаблоны для распознавания
             </h3>
             <div className="patterns">
-                {props.Data.map(pattern => (<ImagePattern Data={pattern}/>))}
+                {props.Data.map((pattern, patternNumber) => 
+                    (<ImagePattern 
+                        Pattern={pattern} 
+                        PatternNumber = {patternNumber}
+                        EidatblePattern = {true}
+                    />))}
             </div>
             <Button icon='plus'/>
         </div>;
