@@ -6,6 +6,7 @@
     align-items: center;
     margin: auto;
     color: aliceblue;
+    z-index:9999;
   }
 
   .header-text {
@@ -19,6 +20,7 @@
     margin-left: 2rem;
     font-size: 2rem;
     background: none;
+    z-index:9999;
   }
   
   .nav-menu {
@@ -31,6 +33,7 @@
     top: 0;
     left: -100%;
     transition: 850ms;
+    z-index:9999;
   }
   
   .nav-menu.active {
