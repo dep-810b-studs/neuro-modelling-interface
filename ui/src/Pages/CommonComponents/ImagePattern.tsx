@@ -1,39 +1,53 @@
-import React from "react";
-import { stateManager } from '../../index';
-import PropsWrapper from "../../PropsWrapper";
+import React, { useRef} from "react";
 
-export function ImagePattern(imagePatternProps: PropsWrapper<number[][]>) {
-    const canvas = React.useRef(null);
+type ImagePatternProps = {
+    Pattern: number[][];
+    PatternNumber: number;
+    EidatblePattern: boolean;
+};
 
+function drawPattern(canvas: HTMLCanvasElement, patternToDraw: number[][]){
+    if(canvas == null)
+        return;
+
+    const context = canvas.getContext("2d") as CanvasRenderingContext2D;
+    const cellSide = 30;
+
+    patternToDraw.forEach((patternRow, patternRowNumber) => {
+        patternRow.forEach((patternItem, patternColumnNumber) => {
+            let x = patternColumnNumber * cellSide;
+            let y = patternRowNumber * cellSide;
+
+            let color = (patternItem == 0 ? 1 : 0) * 255;
+            let cellColor = `rgb(${color},${color},${color})`;
+
+            context.beginPath();
+            context.fillStyle = cellColor;
+            context.fillRect(x, y, cellSide, cellSide);
+        });
+    });
+};
+
+export function ImagePattern(imagePatternProps: ImagePatternProps) {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
     React.useEffect(() => {
-        if(canvas == null || canvas.current == null)
+        if(canvasRef == null || canvasRef.current == null)
             return;
-
+        const canvas: HTMLCanvasElement = canvasRef.current;
+        let pattern = imagePatternProps.Pattern;
+        drawPattern(canvas, pattern);
         // @ts-ignore ignore cause one line upper exist handling case when canvas is null
-        const context = canvas.current.getContext("2d") as CanvasRenderingContext2D;
+        if(imagePatternProps.EidatblePattern){
+            canvas.addEventListener('mousedown', (e) => {
+                let x = Math.trunc(e.offsetX/30);
+                let y = Math.trunc(e.offsetY/30);
+                pattern[y][x] = pattern[y][x] == 1 ? 0 : 1;
+                drawPattern(canvas, pattern)
+            });
+        }
+    }, [canvasRef]);
 
-        const cellSide = 30;
-
-        for (let i = 0; i < imagePatternProps.Data.length; i++) {
-            for (let j = 0; j < imagePatternProps.Data[i].length; j++) {
-
-                let x = j * cellSide;
-                let y = i * cellSide;
-
-                let color = imagePatternProps.Data[i][j] * 255;
-                const cellColor = `rgb(${color},${color},${color})`;
-
-                context.beginPath();
-                context.fillStyle = cellColor;
-                context.fillRect(x, y, cellSide, cellSide);
-            }
-        }}, [canvas]);
-
-       return <canvas
-                    height={300}
-                    ref={canvas}
-                    onClick={(e) => stateManager.UpdatePatterns(e)}
-                />;
+    return <canvas height={300} ref={canvasRef}/>;
 };
 
 export default ImagePattern;
