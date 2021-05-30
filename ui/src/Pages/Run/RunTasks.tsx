@@ -1,4 +1,3 @@
-import React from "react";
 import './RunTasks.css';
 import MemristorParams from "./Components/MemristorParams";
 import NetworkParams from "./Components/NetworkParams";
@@ -10,10 +9,10 @@ import PropsWrapper from "../../PropsWrapper";
 const RunTaskPage = (props: PropsWrapper<RunTaskInfo>) =>
             <div className='home-page-wrapper'>
                 <div className='params-section'>
-                    <MemristorParams Data={props.Data.model_memristors}/>
-                    <NetworkParams Data={props.Data.neural_network}/>
+                    <MemristorParams Data = {props.Data.model_memristors}/>
+                    <NetworkParams Data = {props.Data.neural_network}/>
                     <Patterns Data = {props.Data.patterns} />
                 </div>
-                <RunTaskMenu Data={props.Data}/>
+                <RunTaskMenu/>
             </div>;
 export default RunTaskPage;
