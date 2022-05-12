@@ -4,6 +4,8 @@ type ImagePatternProps = {
     Pattern: number[][];
     PatternNumber: number;
     EidatblePattern: boolean;
+    Height: number;
+    Width: number;
 };
 
 function drawPattern(canvas: HTMLCanvasElement, patternToDraw: number[][]){
@@ -18,7 +20,7 @@ function drawPattern(canvas: HTMLCanvasElement, patternToDraw: number[][]){
             let x = patternColumnNumber * cellSide;
             let y = patternRowNumber * cellSide;
 
-            let color = (patternItem == 0 ? 1 : 0) * 255;
+            let color = patternItem * 255;
             let cellColor = `rgb(${color},${color},${color})`;
 
             context.beginPath();
@@ -39,7 +41,7 @@ export function ImagePattern(imagePatternProps: ImagePatternProps) {
         // @ts-ignore ignore cause one line upper exist handling case when canvas is null
         if(imagePatternProps.EidatblePattern){
             canvas.addEventListener('mousedown', (e) => {
-                let x = Math.trunc(e.offsetX/30);
+                let x = Math.trunc(e.offsetX/30) - 1;
                 let y = Math.trunc(e.offsetY/30);
                 pattern[y][x] = pattern[y][x] == 1 ? 0 : 1;
                 drawPattern(canvas, pattern)
@@ -47,7 +49,7 @@ export function ImagePattern(imagePatternProps: ImagePatternProps) {
         }
     }, [canvasRef]);
 
-    return <canvas height={300} ref={canvasRef}/>;
+    return <canvas height={imagePatternProps.Height} width={imagePatternProps.Width}  ref={canvasRef}/>;
 };
 
 export default ImagePattern;

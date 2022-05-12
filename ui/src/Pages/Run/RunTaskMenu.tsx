@@ -16,6 +16,7 @@ import "./RunTasks.css";
                     className="button-item"
                     icon='play' 
                     content='Запустить задачу'
+                    onClick={() => stateManager.RunTask()}
                 />
             </div>;
 };

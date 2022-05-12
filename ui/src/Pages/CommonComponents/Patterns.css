@@ -11,26 +11,3 @@
     height: 80%;
     overflow-y: scroll;
 }
-
-.pattern {
-    display: flex;
-    flex-direction: row;
-}
-
-.pattern-row{
-    display: flex;
-    flex-direction: row;
-    font-size: 1000%;
-}
-
-.pattern-item-white
-{
-    flex-direction: column;
-    background-color: white;
-}
-
-.pattern-item-black
-{
-    flex-direction: column;
-    background-color: black;
-}

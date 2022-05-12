@@ -1,0 +1,6 @@
+.epoch-patterns{
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-radius: 200px;
+}

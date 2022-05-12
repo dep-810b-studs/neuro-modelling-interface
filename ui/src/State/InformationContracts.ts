@@ -22,13 +22,3 @@ export type RunTaskInfo = {
     neural_network: NeuralNetworkInfo;
     patterns: number[][][]
 }
-
-export type RunTaskScenario = {
-    MemristorModel: MemristorInfo;
-    neural_network: NeuralNetworkInfo;
-    patterns: number[][][];
-}
-
-export type TaskStatus = {
-    id: string;
-}

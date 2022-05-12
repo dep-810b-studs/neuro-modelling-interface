@@ -9,7 +9,10 @@
 
 .tasks{
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
+  font-size: 2rem;
+  background-repeat: no-repeat;
+  background-color: #d7d8dc;
 }
 .results {
   display: flex;

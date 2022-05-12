@@ -1,16 +1,22 @@
 import React from 'react';
 import './MemristorParams.css';
 import {Button, Dropdown, DropdownItemProps, DropdownProps} from "semantic-ui-react";
-import ParamsList  from "../../CommonComponents/ParamsList";
+import ParamsList from "../../CommonComponents/ParamsList";
 import {MemristorInfo} from "../../../State/InformationContracts";
-import PropsWrapper from "../../../PropsWrapper";
+import {stateManager} from "../../../index";
+import {ParamGroup} from "../../../State/Store";
 
-export default class MemristorParams extends React.Component<PropsWrapper<MemristorInfo[]>, MemristorInfo> {
+type MemristorParamsProps = {
+    Data: MemristorInfo[];
+    SelectedMemristorId: number;
+}
+
+export default class MemristorParams extends React.Component<MemristorParamsProps, MemristorInfo> {
     private _memristorSelectionItems : DropdownItemProps[];
 
-    constructor(props: PropsWrapper<MemristorInfo[]>) {
+    constructor(props: MemristorParamsProps) {
         super(props);
-        this.state = this.props.Data[0];
+        this.state = this.props.Data[props.SelectedMemristorId];
         this._memristorSelectionItems = this.props.Data.map(model => {
             return {key: model.id, text: model.name, value: model.id }
         });
@@ -22,8 +28,10 @@ export default class MemristorParams extends React.Component<PropsWrapper<Memris
             const currentModel = this.props.Data
                 .find(model => model.id == data.value);
 
-            if(currentModel != undefined)
+            if(currentModel != undefined){
                 this.setState(currentModel);
+                stateManager.SelectMemristor(currentModel.id);
+            }
         }
     }
 
@@ -49,8 +57,7 @@ export default class MemristorParams extends React.Component<PropsWrapper<Memris
             <h3>
                 Параметры модели мемристора
             </h3>
-            <ParamsList Data={this.state.params}/>
-            <Button icon='plus'/>
+            <ParamsList Data={this.state.params} Group={ParamGroup.Memristor}/>
         </div>);
 }
 

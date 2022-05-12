@@ -1,6 +1,5 @@
 import './Patterns.css';
 import ImagePattern from "./ImagePattern";
-import {Button} from "semantic-ui-react";
 import PropsWrapper from "../../PropsWrapper";
 
 const ImagePatterns = (props: PropsWrapper<number[][][]>) =>
@@ -14,9 +13,10 @@ const ImagePatterns = (props: PropsWrapper<number[][][]>) =>
                         Pattern={pattern} 
                         PatternNumber = {patternNumber}
                         EidatblePattern = {true}
+                        Width={240}
+                        Height={250}
                     />))}
             </div>
-            <Button icon='plus'/>
         </div>;
 
 export default ImagePatterns;

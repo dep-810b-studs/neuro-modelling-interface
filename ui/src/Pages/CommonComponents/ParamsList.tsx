@@ -1,21 +1,42 @@
 import React from "react";
-import {Segment, SegmentGroup} from "semantic-ui-react";
 import {Param} from "../../State/InformationContracts";
-import PropsWrapper from "../../PropsWrapper";
+import {stateManager} from "../../index";
+import {ParamGroup} from "../../State/Store";
 
-const ParamsList = (props: PropsWrapper<Param[]>) =>
-            <div className='params-list'>
-                <SegmentGroup size='mini'>
-                    {props.Data.map(param =>
-                        <SegmentGroup horizontal={true}>
-                            <Segment attached='top'>
-                                {param.name}
-                            </Segment>
-                            <Segment attached='top'>
-                                {param.value}
-                            </Segment>
-                        </SegmentGroup>)}
-                </SegmentGroup>
-            </div>;
+type ParamsListProps = {
+  Data: Param[];
+  Group: ParamGroup;
+};
+
+const ParamsList = (props: ParamsListProps) => {
+
+let paramName = "";
+let paramValue = 0;
+
+return (<table className="table table-bordered">
+        <thead>
+        <tr>
+            <th>Параметр</th>
+            <th>Значение</th>
+        </tr>
+        </thead>
+        <tbody>
+        {props.Data.map((row, index) => {
+            return (
+                <tr key={index}>
+                    <td>
+                        <input type='text' className='form-control' step='1' min="1" value={row.name}/>
+                    </td>
+                    <td>
+                        <input type='number' className='form-control'
+                               name={row.name} defaultValue={row.value}
+                               onChange={(e)=> stateManager.SetInputParam(props.Group, row.name, parseFloat(e.target.value) )}
+                        />
+                    </td>
+                </tr>);
+        })}
+        </tbody>
+    </table>);
+}
 
 export default ParamsList;
